@@ -30,4 +30,4 @@ tester: tokenizer.o history.o mainUI.o
 
 clean:
 
-	rm -f *.o tester
+	rm -f *.o tester *~
