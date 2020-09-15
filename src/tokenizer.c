@@ -22,8 +22,8 @@ int non_space_char(char c){
    str does not contain any words. */
 char *word_start(char *str){
   for(   ; *str != '\0'; str++){
-    if(space_char(*str) && non_space_char(*(str+1))){
-      return (str+1);
+    if(non_space_char(*str)){
+      return (str);
     }
   }
   return str;
