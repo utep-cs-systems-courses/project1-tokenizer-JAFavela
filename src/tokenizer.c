@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 
 //This file will have all the methods defined in tokenizer.h
@@ -52,7 +53,21 @@ int count_words(char *str){
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len){
-  return 0;
+  char *copy = malloc((sizeof(char) * len) + 1);
+  char *temp=copy;
+  while(len>0){
+    if(non_space_char(*inStr)){
+      *temp=*inStr;
+      temp++;
+      inStr++;
+      len--;
+    }
+    else{
+      inStr++;
+    }
+  }
+  *temp='\0';
+  return copy;
 }
 
 /* Returns a freshly allocated zero-terminated vector of freshly allocated 
