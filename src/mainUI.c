@@ -6,13 +6,21 @@
 
 int main()
 {
-  char str[50];
-  printf("\n> ");
-  scanf("%[^\n]",str);
-  printf("%s\n",str);
-  printf("The word_start() pointer points to : %c\n",*(word_start(&str[0])));
-  printf("The word starts at: %d \nThe word_terminator() pointer is at: %d\n",&str[0],word_terminator(&str[0]));
-  printf("Now count_words in string: %d\n",(count_words(&str[0])));
+  printf("'~' to exit");
+  while(1){
+    
+    char str[50];
+    printf("\n> ");
+    scanf(" %[^\n]",str);
+    if(str[0]=='~'){
+      printf("Goodbye.\n");
+      goto done;
+    }
+    printf("%s\n",str);
+    printf("The word_start() pointer points to : %c\n",*(word_start(&str[0])));
+    printf("The word starts at: %d \nThe word_terminator() pointer is at: %d\n",&str[0],word_terminator(&str[0]));
+    printf("Count_words() in string: %d\n",(count_words(&str[0])));
+  }
   
   /* 
   while (1) { // Infinite while loop
@@ -32,8 +40,8 @@ int main()
       printf("sc : %d",space_char(c));
       printf("\nnsc: %d\n",non_space_char(c));
     }
-}
+  }
+  */
  done: // To exit from program
   return 0;
-  */
 }
