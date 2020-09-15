@@ -20,6 +20,8 @@ int main()
     printf("The word_start() pointer points to : %c\n",*(word_start(&str[0])));
     printf("The word starts at: %d \nThe word_terminator() pointer is at: %d\n",&str[0],word_terminator(&str[0]));
     printf("Count_words() in string: %d\n",(count_words(&str[0])));
+    short ln = word_terminator(&str[0]) - (&str[0]);
+    printf("Copy of first word using copy_str(): %s\n",copy_str(&str[0],ln));
   }
   
   /* 
