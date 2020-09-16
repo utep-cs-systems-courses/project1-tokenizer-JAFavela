@@ -10,18 +10,23 @@ int main()
   while(1){
     
     char str[50];
-    printf("\n> ");
+    printf("\n\n> ");
     scanf(" %[^\n]",str);
     if(str[0]=='~'){
       printf("Goodbye.\n");
       goto done;
     }
-    printf("%s\n",str);
+    //printf("\n%s\n",str);
+    /*
     printf("The word_start() pointer points to : %c\n",*(word_start(&str[0])));
     printf("The word starts at: %d \nThe word_terminator() pointer is at: %d\n",&str[0],word_terminator(&str[0]));
     printf("Count_words() in string: %d\n",(count_words(&str[0])));
     short ln = word_terminator(&str[0]) - (&str[0]);
     printf("Copy of first word using copy_str(): %s\n",copy_str(&str[0],ln));
+    */
+    char **tokens = (tokenize(&str[0]));
+    print_tokens(tokens);
+    // free_tokens(tokens);
   }
   
   /* 
