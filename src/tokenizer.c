@@ -33,8 +33,8 @@ char *word_start(char *str){
 /* Returns a pointer terminator char following *word */
 char *word_terminator(char *word){
   for(   ; *word != '\0'; word++){
-    if(space_char(*word)){
-      return (word);
+    if(non_space_char(*word) && space_char(*(word+1))){
+      return (word+1);
     }
   }
 }
@@ -80,15 +80,31 @@ char *copy_str(char *inStr, short len){
      tokens[3] = 0
 */
 char **tokenize(char* str){
-  return 0;
+  char *strt, **tokens;
+  char *end = str;
+  int numWrds = count_words(str);
+  tokens = malloc((sizeof(char*) * numWrds) + 1);
+  for(int w=0; w<numWrds; w++){
+    strt = word_start(end);
+    end = word_terminator(strt);
+    *tokens = copy_str(strt,end-strt);
+    tokens++;
+  }
+  *tokens = end;
+  tokens = tokens-numWrds;
+  return tokens;
 }
 
 /* Prints all tokens. */
 void print_tokens(char **tokens){
-  
+  printf("\nTokens:");
+  while(**tokens != '\0'){
+    printf("\n%s",*tokens);
+    tokens++;
+  }
 }
 
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens){
-  
+  char **temp = tokens; 
 }
