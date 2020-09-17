@@ -90,7 +90,9 @@ char **tokenize(char* str){
     *tokens = copy_str(strt,end-strt);
     tokens++;
   }
-  *tokens = end;
+  char *lst = malloc(sizeof(char));
+  *lst='\0';
+  *tokens = lst;
   tokens = tokens-numWrds;
   return tokens;
 }
@@ -106,5 +108,11 @@ void print_tokens(char **tokens){
 
 /* Frees all tokens and the vector containing themx. */
 void free_tokens(char **tokens){
-  char **temp = tokens; 
+  char **temp = tokens;
+  while(**temp !='\0'){
+    free(*temp);
+    temp++;
+  }
+  free(*temp);
+  free(tokens);
 }
