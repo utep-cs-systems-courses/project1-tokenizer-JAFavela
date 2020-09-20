@@ -53,8 +53,12 @@ int count_words(char *str){
 /* Returns a fresly allocated new zero-terminated string 
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len){
-  char *copy = malloc((sizeof(char) * len) + 1);
+  char *copy = malloc(sizeof(char) * (len + 1));
   char *temp=copy;
+  if(*inStr=='\0'){
+    *copy='\0';
+    return copy;
+  }
   while(len>0){
     if(non_space_char(*inStr)){
       *temp=*inStr;
@@ -83,7 +87,7 @@ char **tokenize(char* str){
   char *strt, **tokens;
   char *end = str;
   int numWrds = count_words(str);
-  tokens = malloc((sizeof(char*) * numWrds) + 1);
+  tokens = malloc(sizeof(char*) * (numWrds + 1));
   for(int w=0; w<numWrds; w++){
     strt = word_start(end);
     end = word_terminator(strt);
