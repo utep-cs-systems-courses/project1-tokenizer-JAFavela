@@ -6,7 +6,7 @@ CFLAGS=-g -O3
 
 # first target is built by default
 
-all: tester
+all: tokenYzer
 
 
 
@@ -16,13 +16,11 @@ tokenizer.o: tokenizer.h
 
 history.o: history.h
 
-#tester.o: history.h tokenizer.h
-
 mainUI.o: history.h tokenizer.h
 
 # $@=target, $^=prerequisites
 
-tester: tokenizer.o history.o mainUI.o
+tokenYzer: tokenizer.o history.o mainUI.o
 
 	cc -o $@ $^ $(CFLAGS)
 
@@ -30,4 +28,9 @@ tester: tokenizer.o history.o mainUI.o
 
 clean:
 
-	rm -f *.o tester *~
+	rm -f *.o *~
+# runs progrm
+run:
+	make clean
+	make
+	./tokenYzer
