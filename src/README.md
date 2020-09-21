@@ -14,6 +14,13 @@ spaces as the delimiter, into seperate word tokens.
 
 #### How To Use:
 
+To compile, clean up directory, and run program:
+```
+.../src> make auto
+```
+
+---
+
 To view history enter ```?``` at any time.
 Example:
 ```
