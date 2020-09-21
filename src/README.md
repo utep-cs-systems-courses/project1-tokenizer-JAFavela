@@ -5,8 +5,8 @@ spaces as the delimiter, into seperate word tokens.
 #### Other Features:
 
   - Keeps a history of strings inputed by user.
-    - Allows user to retrieve and reuse specific strings from history
-      - Displays items currently in history and their ID
+  - Allows user to retrieve and reuse specific strings from history
+  - Displays items currently in history and their ID
 
 ---
 ---
