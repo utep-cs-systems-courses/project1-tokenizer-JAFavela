@@ -1,12 +1,12 @@
 # Lab Project 1: Tokenizer
-This program takes a string inputted by a user and splits the string, using
+This program takes a string as input from a user and splits the string, using
 spaces as the delimiter, into seperate word tokens.
 
 #### Other Features:
 
-  - Keeps a history of strings inputed by user.
-    - Allows user to retrieve and reuse specific strings from history
-      - Displays items currently in history and their ID
+  - Keeps a history of user input.
+  - Allows user to retrieve and reuse specific strings from history
+  - Displays items currently in history and their ID
 
 ---
 ---
