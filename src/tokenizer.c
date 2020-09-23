@@ -41,15 +41,21 @@ char *word_terminator(char *word)
       return (word + 1);
     }
   }
+  return word;
 }
 
 /* Counts the number of words in the string argument. */
 int count_words(char *str)
 {
   int w = 0;
+  int afterNSC = 1;
   for(   ; *str != '\0'; str++) {
-    if(space_char(*str)) {
+    if(space_char(*str) && afterNSC) {
+      afterNSC = 0;
       w++;
+    }
+    if(non_space_char(*str)) {
+      afterNSC = 1;
     }
   }
   return w + 1;
@@ -97,9 +103,7 @@ char **tokenize(char* str)
     *tokens = copy_str(strt, end-strt);
     tokens++;
   }
-  char *lst = malloc(sizeof(char)); //allocates mem and creates 0 token
-  *lst = '\0';
-  *tokens = lst;
+  *tokens = 0;
   tokens  = tokens - numWrds;
   return tokens;
 }
@@ -108,7 +112,7 @@ char **tokenize(char* str)
 void print_tokens(char **tokens)
 {
   printf("\nTokens:");
-  while(**tokens != '\0') {
+  while(*tokens) {
     printf("\n%s", *tokens);
     tokens++;
   }
@@ -118,7 +122,7 @@ void print_tokens(char **tokens)
 void free_tokens(char **tokens)
 {
   char **temp = tokens;
-  while(**temp != '\0') {
+  while(*temp != 0) {
     free(*temp);
     temp++;
   }
