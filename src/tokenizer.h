@@ -27,6 +27,9 @@ int count_words(char *str);
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len);
 
+/*Returns a freshly allocated zero-terminated string containing a copy of
+  of the input string to place in history*/
+char *copy_str_hist(char *str);
 /* Returns a freshly allocated zero-terminated vector of freshly allocated 
    space-separated tokens from zero-terminated str.
 

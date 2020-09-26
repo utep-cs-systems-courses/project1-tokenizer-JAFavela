@@ -82,6 +82,27 @@ char *copy_str(char *inStr, short len)
   return copy;
 }
 
+/*Returns a freshly allocated zero-terminated string containing a copy of
+  of the input string to place in history*/
+char *copy_str_hist(char *str)
+{
+  str = word_start(str);
+      int len = 0;
+      while(*str != '\0') { // determines string length
+	len++;
+	str++;
+      }
+      char *strCopy = malloc(sizeof(char) * (len + 1));  //allocates memory for copy of string
+      str = str - len;
+      while(*str != '\0') {  //copy string to allocated memory
+	*strCopy = *str;
+	strCopy++;
+	str++;
+      }
+      *strCopy = *str;
+      strCopy = strCopy - len;
+      return (char*) strCopy;
+}
 /* Returns a freshly allocated zero-terminated vector of freshly allocated 
    space-separated tokens from zero-terminated str.
 
