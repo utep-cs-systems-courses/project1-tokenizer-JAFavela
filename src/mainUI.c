@@ -9,6 +9,7 @@ int main()
 {
   int hCnt = 0; //keeps track of how many items in history
   List *history = init_history();
+  printf("\n\nTokenizer commands:\n'?' \t- View history\n'!<ID>'\t- Tokenize item from history\n'~' \t- Exit");
   while(1) {   
     char str[50];
     printf("\n\n> ");
@@ -34,21 +35,7 @@ int main()
       print_history(history);
     }
     else {  //new string input to tokenize
-      char *temp = word_start(&str[0]);
-      int len = 0;
-      while(*temp != '\0') { // determines string length
-	len++;
-	temp++;
-      }
-      char *strCopy = malloc(sizeof(char) * (len + 1));  //allocates memory for copy of string
-      temp = temp - len;
-      while(*temp != '\0') {  //copy string to allocated memory
-	*strCopy = *temp;
-	strCopy++;
-	temp++;
-      }
-      *strCopy = *temp;
-      strCopy = strCopy - len;
+      char *strCopy = copy_str_hist(&str[0]);
       hCnt++;
       add_history(history, strCopy);
       char **tokens = (tokenize(strCopy));
