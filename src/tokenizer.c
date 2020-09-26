@@ -25,7 +25,7 @@ int non_space_char(char c)
    str does not contain any words. */
 char *word_start(char *str)
 {
-  for(   ; *str != '\0'; str++) {  //goes until first non-space character
+  for(   ; *str != '\0'; str++) {  /* Goes until first non-space character */
     if(non_space_char(*str)) {
       return (str);
     }
@@ -36,7 +36,7 @@ char *word_start(char *str)
 /* Returns a pointer terminator char following *word */
 char *word_terminator(char *word)
 {
-  for(   ; *word != '\0'; word++) {  //goes until first space character
+  for(   ; *word != '\0'; word++) {  /* Goes until first space character */
     if(non_space_char(*word) && space_char(*(word + 1))) {
       return (word + 1);
     }
@@ -65,10 +65,10 @@ int count_words(char *str)
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len)
 {
-  char *copy = malloc(sizeof(char) * (len + 1)); //allocates memory for token
+  char *copy = malloc(sizeof(char) * (len + 1)); /* Allocates memory for token */
   char *temp = copy;
   while(len > 0) {
-    if(non_space_char(*inStr)) {  //copies indicated number of characters
+    if(non_space_char(*inStr)) {  /* Copies indicated number of characters */
       *temp = *inStr;
       temp++;
       inStr++;
@@ -82,19 +82,19 @@ char *copy_str(char *inStr, short len)
   return copy;
 }
 
-/*Returns a freshly allocated zero-terminated string containing a copy of
-  of the input string to place in history*/
+/* Returns a freshly allocated zero-terminated string containing a copy of
+   of the input string to place in history */
 char *copy_str_hist(char *str)
 {
   str = word_start(str);
       int len = 0;
-      while(*str != '\0') { // determines string length
+      while(*str != '\0') { /* Determines string length */
 	len++;
 	str++;
       }
-      char *strCopy = malloc(sizeof(char) * (len + 1));  //allocates memory for copy of string
+      char *strCopy = malloc(sizeof(char) * (len + 1));  /* Allocates memory for copy of string */
       str = str - len;
-      while(*str != '\0') {  //copy string to allocated memory
+      while(*str != '\0') {  /* Copy string to allocated memory */
 	*strCopy = *str;
 	strCopy++;
 	str++;
@@ -117,7 +117,7 @@ char **tokenize(char* str)
   char *strt, **tokens;
   char *end = str;
   int numWrds = count_words(str);
-  tokens = malloc(sizeof(char*) * (numWrds + 1));  //allocates memory for token
+  tokens = malloc(sizeof(char*) * (numWrds + 1));  /* Allocates memory for token */
   for(int w = 0; w < numWrds; w++) {
     strt = word_start(end);
     end = word_terminator(strt);

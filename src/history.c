@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include "history.h"
 
-//This file will include all the methods defined in history.h
-
 /* Initialize the linked list to keep the history. */
 List *init_history()
 {
@@ -19,7 +17,7 @@ List *init_history()
 */
 void add_history(List *list, char *str)
 {
-  Item *temp = list->root; //Temp pointer to iterate through LL
+  Item *temp = list->root; /* Temp pointer to iterate through LL */
   int nid = 0;
   while(temp->next != NULL){
     nid++;
@@ -27,7 +25,7 @@ void add_history(List *list, char *str)
   }
   temp->id  = nid+1;
   temp->str =   str;
-  temp->next = malloc(sizeof(Item)); //allocate memory for next item in LL
+  temp->next = malloc(sizeof(Item)); /* Allocate memory for next item in LL */
 }
 
 /* Retrieve the string stored in the node where Item->id == id.
@@ -42,14 +40,14 @@ char *get_history(List *list, int id)
   return temp->str;
 }
 
-/*Print the entire contents of the list. */
+/* Print the entire contents of the list */
 void print_history(List *list)
 {
   printf("Input History:\nID |  Input\n-------------------------------------------\n");
   Item *temp = list->root;
   while(1){
     if(temp->id < 10)
-      printf(" %d |  %s\n", temp->id, temp->str); //added just so history output looked nicer
+      printf(" %d |  %s\n", temp->id, temp->str); /* Added just so history output looked nicer */
     else
       printf( "%d |  %s\n", temp->id, temp->str);
     if(temp->next->next == NULL)
@@ -58,12 +56,12 @@ void print_history(List *list)
   }
 }
 
-/*Free the history list and the strings it references. */
+/* Free the history list and the strings it references */
 void free_history(List *list)
 {
   Item *behind = list->root;
   Item *ahead;
-  while(behind->next != NULL){ //frees memory in reverse order
+  while(behind->next != NULL){ /* Frees memory in reverse order */
     ahead = behind->next;
     free(behind->next);
     free(behind);
